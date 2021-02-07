@@ -1,5 +1,6 @@
 from aws_cdk import core
 from aws_cdk import aws_kms as kms
+from aws_cdk import aws_iam as iam
 
 
 class KmsStack(core.Stack):
@@ -12,6 +13,12 @@ class KmsStack(core.Stack):
                                      description="KMS CMK for Person data dynamo db table",
                                      enable_key_rotation=True,
                                      enabled=True)
+
+        # TODO: Define appropriate policy document for KMK-CMK
+        #dynamodb_key_policy_doc = iam.PolicyDocument()
+        #dynamodb_key_statement = iam.PolicyStatement()
+        #dynamodb_key_statement.add_actions(actions=['kms:encrypt', 'kms:decrypt'])
+
 
     @property
     def dynamodb_key(self):
